@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 salaries = pd.read_csv('Salaries.csv')
-
+#print(salaries.info())
 #Task 1: Finding the number of unique jobs.
 """unique_jobs = pd.unique(salaries["JobTitle"])
 unique_job_count = len(unique_jobs)
@@ -29,8 +29,13 @@ print(surname_greater_than_six)"""
 
 #Task 4: Adding last updated column
 
-timestamp = datetime.now()
+"""timestamp = datetime.now()
 
-salaries['last_updated'] = timestamp.isoformat()
+salaries['last_updated'] = timestamp.isoformat()"""
 
-salaries.info()
+#Task 5: Adding time_ratio column (OverTime:BasePay)
+
+
+salaries['time_ratio'] = salaries['BasePay'] / salaries['OvertimePay']
+
+#Task 6: A new dataframe that contains employees who earn over $100k
