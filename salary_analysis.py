@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 
 salaries = pd.read_csv('Salaries.csv')
 
@@ -18,10 +19,18 @@ for value in salaries["EmployeeName"]:
 print(john_count)"""
 
 #Task 3: Entries with a surname > 6
-surname_greater_than_six = 0
+"""surname_greater_than_six = 0
 name = salaries["EmployeeName"]
 for item in salaries["EmployeeName"]:
     if len(item.split()[-1]) > 6:
         surname_greater_than_six += 1 
 
-print(surname_greater_than_six)
+print(surname_greater_than_six)"""
+
+#Task 4: Adding last updated column
+
+timestamp = datetime.now()
+
+salaries['last_updated'] = timestamp.isoformat()
+
+salaries.info()
