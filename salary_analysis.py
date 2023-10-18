@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+import numpy as np
 
 salaries = pd.read_csv('Salaries.csv')
 #print(salaries.info())
@@ -36,6 +37,29 @@ salaries['last_updated'] = timestamp.isoformat()"""
 #Task 5: Adding time_ratio column (OverTime:BasePay)
 
 
-salaries['time_ratio'] = salaries['BasePay'] / salaries['OvertimePay']
+#salaries['time_ratio'] = salaries['BasePay'] / salaries['OvertimePay']
 
-#Task 6: A new dataframe that contains employees who earn over $100k
+#Task 6/7: A new dataframe that contains employees who earn over $100k
+
+
+new_df = salaries[salaries['BasePay'] > 100000] [["EmployeeName", "BasePay"]]
+
+new_employee =  {
+    'EmployeeName': 'GARY BRADBURN',
+    'JobTitle': 'SHORT SHORT AMBASSADOR',
+    'BasePay': 1938192.81,
+    'OvertimePay': 200,
+    'OtherPay': 2082,
+    'Benefits': np.nan,
+    'TotalPay': 48394832947324,
+    'TotalPayBenefits': np.nan,
+    'Year': 1991,
+    'Notes': 0,
+    'Agency': 'FBI',
+    'Status': 0,
+    'time_ratio': np.nan,
+    }
+
+new_df = new_df._append(new_employee, ignore_index=True)
+
+print(new_df)
